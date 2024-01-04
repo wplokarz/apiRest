@@ -16,6 +16,13 @@ public class DeleteBoardTest extends RestBoardClient {
 
         // Create sample board to get board ID to remove in next steps
         ExtractableResponse response = createBoard(body);
+
+        // TestNG
+        Assert.assertEquals(response.statusCode(), 200);
+
+        // AssertJ
+        assertThat(response.statusCode()).isEqualTo(200);
+
         String boardID = response.jsonPath().getString("id");
         response = deleteBoard(boardID);
 
